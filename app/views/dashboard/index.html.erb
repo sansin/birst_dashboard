@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#bx {
+	border: 1px solid grey;
+    padding: 10px;
+    margin: 30px;
+    background-color:#e6e6e6;
+}
+#css_h1 {
+    color: #3385ff;
+    font-family: verdana;
+    font-size: 150%;
+
+}
+#css_ld_time  {
+    color: red;
+    font-family: courier;
+    font-size: 100%;
+}
+</style>
+</head>
+</body>
+
+<% if false %>
+<% @spaces.each do |space| %>
+	<div id="bx">
+	<div id="css_h1"><%= space.name %> </div> <br/> 
+	<% @space_variables.each do |space_variable| %>
+		<% if space_variable.space_id == space.space_id %>
+				<div id="css_ld_time"> 
+				<%= space_variable.name %> : 
+				<%= space_variable.value %> 
+				</div>
+		<% end %>
+	<% end %>
+	<br/>
+	<% @space_properties.each do |space_property| %>
+		<% if space_property.space_id == space.space_id %>
+				<b> Comments: </b> 
+				<%= simple_format(space_property.comments) %> <br/>
+		<% end %>
+	<% end %>
+	</div>
+<% end %>
+<% end %>
+
+<% @space_variables.each do |space_variable| %>
+	<% @spaces.each do |space| %>
+		<% if space_variable.space_id == space.space_id %>
+				<div id="bx">
+				<div id="css_h1"><%= space.name %> </div> <br/> 
+				<div id="css_ld_time"> 
+				<%= space_variable.name %> : 
+				<%= space_variable.value %> 
+				</div>
+				<% @space_properties.each do |space_property| %>
+					<% if space_property.space_id == space.space_id %>
+						<b> Comments: </b> 
+						<%= simple_format(space_property.comments) %> <br/>
+					<% end %>
+				<% end %>
+				</div>
+		<% end %>
+	<% end %>	
+<% end %>
+
+
+</body>
+</html>
