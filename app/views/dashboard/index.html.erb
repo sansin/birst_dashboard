@@ -19,9 +19,21 @@
     font-family: courier;
     font-size: 100%;
 }
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
 </style>
 </head>
 </body>
+
+<div class="actions"> <%= button_to 'Refresh', 'dashboard/refresh_data', :class => "button", :controller => :dashboard, :action => :refresh_data, :method => :get %> </div>
 
 <% @space_variables.each do |space_variable| %>
 	<% @spaces.each do |space| %>
@@ -30,14 +42,15 @@
 				<div id="css_h1"><%= space.name %> </div> <br/> 
 				<div id="css_ld_time"> 
 				<%= space_variable.name %> : 
-				<%= space_variable.value %> 
+				<%= space_variable.value %> <br/> <br/> 
 				</div>
 				<% @space_properties.each do |space_property| %>
 					<% if space_property.space_id == space.space_id %>
 						<b> Comments: </b> 
-						<%= simple_format(space_property.comments) %> <br/>
+						<%= simple_format(space_property.comments) %> 
 					<% end %>
 				<% end %>
+				<div class="actions"> <%= button_to 'Ignore From Tracking', 'dashboard/ignore_from_list', :class => "button", :controller => :dashboard, :action => :ignore_from_list, :method => :get %> </div>
 				</div>
 		<% end %>
 	<% end %>	

@@ -1,9 +1,7 @@
 task :refresh_space_list  => :environment do
-	birst_settings_file =  File.expand_path('~/.birstcl')
-	Birst_Command.load_settings_from_file(birst_settings_file)
-	Birst_Command::Session.new do |bc|
-		@something = bc.list_spaces
-	end
+	@bc = BirstInterface.new_session
+	
+	@something = @bc.list_spaces
 
 	space_list = []
 	Space.all.to_a.uniq{|s| space_list  <<  s.name}
@@ -13,7 +11,12 @@ task :refresh_space_list  => :environment do
 		if not space_list.include? space_hsh[:name]
 			Space.create(name: space_hsh[:name],
 					 space_id: space_hsh[:id],
-					 owner: space_hsh[:owner])
+					 owner: space_hsh[:owner],
+					 tracking: "Yes",
+					 is_active: 1)
+		else
+			space_details = Space.find_by(space_id: space_hsh[:id])
+			space_details.update(tracking: "Yes", is_active: 1)
 		end
 	end
 end

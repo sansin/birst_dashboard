@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614065935) do
+ActiveRecord::Schema.define(version: 20160615212430) do
 
   create_table "space_properties", force: :cascade do |t|
     t.string   "space_id"
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 20160614065935) do
     t.string   "owner"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "tracking"
+    t.integer  "is_active"
   end
 
 end
