@@ -20,7 +20,7 @@ task :update_space_properties  => :environment do
 				@bc = BirstInterface.new_session
 				retry
 			else 
-				p "Skipping this space and proceeding with next one..." 
+				p "Skipping this space and proceeding with next one...." 
 			end 
 		end
 		if not space_list.include? s.space_id
