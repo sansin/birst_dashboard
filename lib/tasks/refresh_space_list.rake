@@ -4,7 +4,7 @@ task :refresh_space_list  => :environment do
 	@something = @bc.list_spaces
 
 	space_list = []
-	Space.all.to_a.uniq{|s| space_list  <<  s.name}
+	Space.all.to_a.uniq{|s| space_list  <<  s.name.to_s}
 	p space_list
 
 	@something[:user_space].each do |space_hsh|
