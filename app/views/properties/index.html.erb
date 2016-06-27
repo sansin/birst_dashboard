@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#bx {
+	border: 1px solid grey;
+    padding: 10px;
+    margin: 30px;
+    background-color:#e6e6e6;
+}
+#css_h1 {
+    color: #3385ff;
+    font-family: verdana;
+    font-size: 150%;
+
+}
+#css_ld_time  {
+    color: red;
+    font-family: courier;
+    font-size: 100%;
+}
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+</style>
+</head>
+</body>
+
+<% @spaces.each do |space| %>
+	<div id="bx">
+	<div id="css_h1"><%= space.name %> </div> <br/> 
+	<b> <u>Space Properties </u></b> <br>
+	<% @space_properties.each do |space_property| %>
+		<% if space_property.space_id == space.space_id %>
+			<% space_property.attributes.each{ |col_name, col_val| %>
+				<b><%= p col_name %>:</b>
+				<%= p col_val %><br> <br> 
+			<% } %>
+		<% end %>
+	<% end %>	
+	<hr>
+	<b><u> Variables </u></b> <br>
+	<% @space_variables.each do |space_variable| %>
+		<% if space_variable.space_id == space.space_id %>
+			<b><%= space_variable.name %> : </b>
+			<%= space_variable.value %> <br> <br> 
+		<% end %>
+	<% end %>
+	</div>
+<% end %>
+
+
+</body>
+</html>

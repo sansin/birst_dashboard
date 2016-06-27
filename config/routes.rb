@@ -2,9 +2,13 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+  get '/', to: 'dashboard#index'
   get '/dashboard', to: 'dashboard#index'
   get '/dashboard/refresh_data', to: 'dashboard#refresh_data'
   get '/dashboard/ignore_from_list', to: 'dashboard#ignore_from_list'
+
+  get '/ignored', to: 'ignored#index'
+  get '/properties', to: 'properties#index'
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

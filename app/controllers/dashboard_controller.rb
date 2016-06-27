@@ -2,7 +2,7 @@ require 'rake'
 
 class DashboardController < ApplicationController
 	def index
-		@spaces = Space.where(:is_active => 1)
+		@spaces = Space.where(:is_active => 1, :tracking => "Yes")
 		@space_properties = SpaceProperty.all
 		@space_variables = SpaceVariable.where(:name => "LoadCompletionTime").order("value")
 	end
@@ -23,7 +23,9 @@ class DashboardController < ApplicationController
 	def ignore_from_list()
     	# Rake::Task['refresh_space_list'].invoke
     	p "Adding space to ignore list"
-    	ignore_spaces = 
+        space_id = params[:ignore_space_id]
+        p space_id
+    	#ignore_spaces = 
     	redirect_to action: :index
 	end
 end
