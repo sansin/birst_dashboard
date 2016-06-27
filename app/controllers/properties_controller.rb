@@ -1,6 +1,5 @@
 class PropertiesController < ApplicationController
 	def index
-		# @spaces = Space.where(:name => "Internal Coupa Dev - Data Model")
 		space_id = params[:space_id]
         p space_id
         @spaces = Space.where(:space_id => space_id)
