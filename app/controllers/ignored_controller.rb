@@ -5,12 +5,14 @@ class IgnoredController < ApplicationController
 		@space_variables = SpaceVariable.where(:name => "LoadCompletionTime").order("value")
 	end
 
-	def add_to_list()
+	def add_to_list
     	# Rake::Task['refresh_space_list'].invoke
     	p "Adding space to tracking list"
         space_id = params[:add_space_id]
         p space_id
-    	#ignore_spaces = 
+    	sp = Space.find_by(space_id: space_id)
+		sp.update(tracking: "Yes")
+    	
     	redirect_to action: :index
 	end
 end

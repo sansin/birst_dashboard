@@ -17,7 +17,7 @@ task :refresh_space_list  => :environment do
 					 is_active: 1)
 		else
 			space_details = Space.find_by(space_id: space_hsh[:id])
-			space_details.update(tracking: "Yes", is_active: 1)
+			space_details.update(is_active: 1)
 		end
 	end
 end

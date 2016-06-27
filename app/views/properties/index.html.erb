@@ -33,6 +33,10 @@
 </head>
 </body>
 
+<h1> Space Details</h1>
+
+<div class="actions"> <%= button_to 'Back', 'dashboard', :class => "button", :controller => :dashboard, :action => :index, :method => :get %> </div>
+
 <% @spaces.each do |space| %>
 	<div id="bx">
 	<div id="css_h1"><%= space.name %> </div> <br/> 
