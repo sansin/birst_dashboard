@@ -50,7 +50,8 @@
 						<%= simple_format(space_property.comments) %> 
 					<% end %>
 				<% end %>
-				<div class="actions"> <%= button_to 'Ignore From Tracking', 'dashboard/ignore_from_list', :class => "button", :controller => :dashboard, :action => :ignore_from_list, params[:ignore_space_id] => 'test space id', :method => :get %> </div>
+				<div class="actions"> <%= button_to 'Ignore From Tracking', 'dashboard/ignore_from_list', :class => "button", :controller => :dashboard, :action => :ignore_from_list, params:{ignore_space_id: space.space_id}, :method => :post %> </div>
+				<div class="actions"> <%= button_to 'More Details', 'properties', :class => "button", :controller => :properties, :action => :index, params:{space_id: space.space_id}, :method => :post %> </div>
 				</div>
 		<% end %>
 	<% end %>	

@@ -4,11 +4,14 @@ Rails.application.routes.draw do
 
   get '/', to: 'dashboard#index'
   get '/dashboard', to: 'dashboard#index'
+  get '/dashboard/index', to: 'dashboard#index'
   get '/dashboard/refresh_data', to: 'dashboard#refresh_data'
-  get '/dashboard/ignore_from_list', to: 'dashboard#ignore_from_list'
+  post '/dashboard/ignore_from_list', to: 'dashboard#ignore_from_list'
 
   get '/ignored', to: 'ignored#index'
   get '/properties', to: 'properties#index'
+  post '/properties', to: 'properties#index'
+  post '/ignored/add_to_list', to: 'ignored#add_to_list'
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
